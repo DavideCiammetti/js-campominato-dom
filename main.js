@@ -20,6 +20,12 @@ function handleClick(box, index,classAdd) {
         console.log(`il numero cliccato è: ${index + 1}`);
     });
 }
+
+// funzione reset
+function resetPlay(){
+    mainContainer.innerHTML = '';
+}
+
 /*fine funzioni */
 
 // alert('selezionare la difficoltà e poi per iniziare a giocare premi il pulsante play'); //LEVO ALERT PER FLUIDITA POI LO REINSERISCO
@@ -34,8 +40,8 @@ const  typeOfHtmlTag = 'div';
 // evento click button
 let click= false;
 button.addEventListener('click', function(){
-
-    if(difficult.value === 'hard'){     //difficoltà hard
+    resetPlay();
+    if(difficult.value === 'easy'){     //difficoltà hard
         const counter = 100;
         const classAddContent = 'box-uno';
         if(!click) {
@@ -69,7 +75,7 @@ button.addEventListener('click', function(){
     }
 
     //difficoltà easy
-     if(difficult.value === 'easy'){      
+     if(difficult.value === 'hard'){      
         const counter = 49;
         const classAddContent = 'box-tre';
         if(!click) {

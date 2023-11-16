@@ -59,24 +59,24 @@ body{
 /* grandezze celle */
 
 .box-uno{
-    width:45px;
-    height: 45px;
+    width:calc(100% / 10);
+    height: calc(100% / 10);
     border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .box-due{
-    width:48px;
-    height: 48px;
+    width:calc(100% / 9);
+    height: calc(100% / 9);
     border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .box-tre{
-    width:58px;
-    height: 58px;
+    width:calc(100% / 7);
+    height: calc(100% / 7);
     border: 1px solid black;
     display: flex;
     justify-content: center;
