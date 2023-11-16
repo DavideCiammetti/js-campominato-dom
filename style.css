@@ -86,9 +86,13 @@ body{
 /* main */
 
 /* footer */
-.foot-container{
+#footer{
     margin: 15px;
+    display: flex;
 }
 .fa-heart{
     font-size: 13px;
+}
+.punteggio{
+    margin-left: 30%;
 }

@@ -11,13 +11,14 @@ function handleGrid(counterMax, mainContainer, typeOfHtmlTag, classAddContent){
         mainContainer.append(content);
     }
 }
+
 // gestione click per ogni casella
 function handleClick(box, index,classAdd) {
     box.addEventListener('click', function () {
 
-        box.classList.add(classAdd);
-        // lo incremento di 1 perche parte da zero ma la conta inizia da 1
-        console.log(`il numero cliccato è: ${index + 1}`);
+    box.classList.add(classAdd);
+    // lo incremento di 1 perche parte da zero ma la conta inizia da 1
+    console.log(`il numero cliccato è: ${index + 1}`);
     });
 }
 
@@ -25,6 +26,23 @@ function handleClick(box, index,classAdd) {
 function resetPlay(){
     mainContainer.innerHTML = '';
 }
+
+// numeri random
+function boomb(cellNumbers) {
+    const arrayRandom = [];
+    
+    while (arrayRandom.length < 16) {
+
+        let random = Math.floor(Math.random() * cellNumbers + 1);
+
+        if (!arrayRandom.includes(random)) {
+            arrayRandom.push(random);
+        }
+    }
+    console.log(arrayRandom);
+    return (arrayRandom);
+}
+
 
 /*fine funzioni */
 
@@ -38,56 +56,91 @@ const mainContainer = document.querySelector('.main-container');
 const  typeOfHtmlTag = 'div';
 
 // evento click button
+// evento click button
 let click= false;
 button.addEventListener('click', function(){
     resetPlay();
+
     if(difficult.value === 'easy'){     //difficoltà hard
         const counter = 100;
+        const randomNumber = boomb(counter);
         const classAddContent = 'box-uno';
-        if(!click) {
-            handleGrid(counter, mainContainer,  typeOfHtmlTag, classAddContent);
-            click = true;
-        }
+
+        handleGrid(counter, mainContainer,  typeOfHtmlTag, classAddContent);
+    
         // click per box
         const box = document.querySelectorAll('.box-uno');
         const classAdd = 'click-col';
 
         for (let i = 0; i < box.length; i++) {
             handleClick(box[i], i, classAdd);
+            // aggiungo evento per click su celle random
+            box[i].addEventListener('click', function () {
+            
+                if (randomNumber.includes(parseInt(box[i].textContent))) {
+                    alert('Hai cliccato su un numero sbagliato. Il gioco è stato bloccato.');
+                    resetPlay();
+                }else{
+                    alert('complimenti! hai vinto la partita')
+                }
+            });
         }
+        
     }
 
     //difficoltà normal
     if(difficult.value === 'normal'){   
         const counter = 81;
+        const randomNumber = boomb(counter);
         const classAddContent = 'box-due';
-        if(!click) {
-            handleGrid(counter, mainContainer,  typeOfHtmlTag, classAddContent);
-            click = true;
-        }
+
+        handleGrid(counter, mainContainer,  typeOfHtmlTag, classAddContent);
+       
         // click per box
         const box = document.querySelectorAll('.box-due');
         const classAdd = 'click-col';
 
         for (let i = 0; i < box.length; i++) {
             handleClick(box[i], i, classAdd);
+            // aggiungo evento per click su celle random
+            box[i].addEventListener('click', function () {
+            
+                if (randomNumber.includes(parseInt(box[i].textContent))) {
+                    alert('Hai cliccato su un numero sbagliato. Il gioco è stato bloccato.');
+                    resetPlay();
+                }else{
+                    alert('complimenti! hai vinto la partita')
+                }
+            });
         }
     }
 
     //difficoltà easy
      if(difficult.value === 'hard'){      
         const counter = 49;
+        const randomNumber = boomb(counter);
         const classAddContent = 'box-tre';
-        if(!click) {
-            handleGrid(counter, mainContainer,  typeOfHtmlTag, classAddContent);
-            click = true;
-        }
+
+        handleGrid(counter, mainContainer,  typeOfHtmlTag, classAddContent);
+       
         // click per box
         const box = document.querySelectorAll('.box-tre');
         const classAdd = 'click-col';
 
         for (let i = 0; i < box.length; i++) {
             handleClick(box[i], i, classAdd);
+            // aggiungo evento per click su celle random
+            box[i].addEventListener('click', function () {
+            
+                if (randomNumber.includes(parseInt(box[i].textContent))) {
+                    alert('Hai cliccato su un numero sbagliato. il gioco verrà riavviato premi play per giocare ');
+                    resetPlay();
+                }else{
+                    alert('complimenti! hai vinto la partita')
+                }
+            });
         }
+        
     }
 });
+
