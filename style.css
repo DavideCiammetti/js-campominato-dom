@@ -82,6 +82,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+.red-box{
+    background-color: red;
+}
 /* grandezze celle */
 /* main */
 

@@ -10,15 +10,16 @@ function handleGrid(counterMax, mainContainer, typeOfHtmlTag, classAddContent){
         content.innerHTML +=`<div>${i}</div>`;
         mainContainer.append(content);
     }
+    return mainContainer;
 }
 
 // gestione click per ogni casella
 function handleClick(box, index,classAdd) {
     box.addEventListener('click', function () {
 
-    box.classList.add(classAdd);
-    // lo incremento di 1 perche parte da zero ma la conta inizia da 1
-    console.log(`il numero cliccato è: ${index + 1}`);
+        box.classList.add(classAdd);
+        // lo incremento di 1 perche parte da zero ma la conta inizia da 1
+        console.log(`il numero cliccato è: ${index + 1}`);
     });
 }
 
@@ -27,14 +28,14 @@ function resetPlay(){
     mainContainer.innerHTML = '';
 }
 
-// numeri random
+// numeri random genero bombe 
 function boomb(cellNumbers) {
     const arrayRandom = [];
     
     while (arrayRandom.length < 16) {
 
         let random = Math.floor(Math.random() * cellNumbers + 1);
-
+        // se i numeri random non sono inclusi allora li inserisce
         if (!arrayRandom.includes(random)) {
             arrayRandom.push(random);
         }
@@ -43,10 +44,7 @@ function boomb(cellNumbers) {
     return (arrayRandom);
 }
 
-
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||fine funzioni||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-
- alert('selezionare la difficoltà e poi per iniziare a giocare premi il pulsante play'); 
 
 // insrisco l'id della select in una variabile con la classe del button
 const select = document.getElementById('difficult');
@@ -59,6 +57,8 @@ const  typeOfHtmlTag = 'div';
 let click= false;
 button.addEventListener('click', function(){
     resetPlay();
+
+
     // prima condizione per uno dei 3 casi
     if(difficult.value === 'easy'){     //difficoltà easy
         const counter = 100;
